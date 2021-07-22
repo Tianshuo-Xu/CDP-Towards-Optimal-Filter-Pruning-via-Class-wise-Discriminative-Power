@@ -1,5 +1,6 @@
 import os
 import sys
+import copy
 import random
 import argparse
 import functools
@@ -90,7 +91,6 @@ def acculumate_feature(model, loader, stop:int):
 def calc_tf_idf(feature:dict, name:str, coe:int, tf_idf_map:dict):   # feature = [c, n] ([64, 10000])    
     # calc tf
     balance_coe = np.log((feature.shape[0]/coe)*np.e) if coe else 1.0
-    print(balance_coe)
     # calc idf
     sample_quant = float(feature.shape[1])
     sample_mean = feature.mean(dim=1).view(feature.shape[0], 1)
@@ -102,7 +102,7 @@ def calc_tf_idf(feature:dict, name:str, coe:int, tf_idf_map:dict):   # feature =
     tf_mean = (tf * (feature >= sample_mean)).sum(dim=1)   # Sa
     tf_mean /= (feature >= sample_mean).sum(dim=1)
 
-    idf = torch.log(sample_quant / (sample_inverse + 1.0)).cuda()
+    idf = torch.log(sample_quant / (sample_inverse + 1.0))
     
     importance = tf_mean * idf
     tf_idf_map[name] = importance
@@ -119,7 +119,7 @@ def get_threshold_by_sparsity(mapper:dict, sparsity:float):
     threshold = torch.topk(tf_idf_array, int(tf_idf_array.shape[0]*(1-sparsity)))[0].min()
     return threshold
 
-def get_threshold_by_flops(mapper:dict, reduced_ratio:float, net):
+def get_threshold_by_flops(mapper:dict, reduced_ratio:float, rnet):
     pass
     # 二分查找最优阈值
     sparsity=reduced_ratio # use reduced_ratio as init sparsity
@@ -128,23 +128,23 @@ def get_threshold_by_flops(mapper:dict, reduced_ratio:float, net):
     
     cdp_config={"threshold": threshold, "map": mapper }
     config_list = [{'sparsity': sparsity,'op_types': ['Conv2d']}]
-    pruner = TFIDFPruner(net, config_list, cdp_config)
 
     ratio=0
     upper=tf_idf_array.shape[0]
     mid=int(tf_idf_array.shape[0]*(1-sparsity))
     lower=0
     count=0
+    flops_r, param, detail_flops = count_flops_params(rnet, (1, 3, 32, 32))
 
-    while(np.abs(ratio-reduced_ratio)> 0.003):
+    while(np.abs(ratio-reduced_ratio)> 0.003 and count<4):
         # 只要差距大于 0.5%
         # 如果按sparsity 得到的flops 被压缩率比目标值小 说明保留的filter多 则保留 小侧的区间 
         # 如果按sparsity 得到的flops 被压缩率比目标值大 说明保留的filter少 则保留 大侧的区间
         threshold = torch.topk(tf_idf_array, mid)[0].min()
-        flops_r, param, detail_flops = count_flops_params(net, (1, 3, 32, 32))
-        pruner.update_masker(net,threshold,mapper)
+        net=copy.deepcopy(rnet)
+        pruner = TFIDFPruner(net, config_list, {"threshold": threshold, "map": mapper })
         _ = pruner.compress()
-        flops, param, detail_flops = count_flops_params(net, (1, 3, 32, 32))
+        flops, param, detail_flops = count_flops_params(net, (1, 3, 32, 32),verbose=False)
         ratio=(flops_r-flops)/flops_r
         if(ratio < reduced_ratio):
             upper=mid
