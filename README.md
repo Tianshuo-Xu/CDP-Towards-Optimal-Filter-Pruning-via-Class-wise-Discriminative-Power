@@ -20,9 +20,7 @@ ImageNet
 
 ## Performance
 
-Pretrained model weight files Google drive link.
-
-Finetuned model weight files Google drive link.
+[Google drive link](https://drive.google.com/drive/folders/16rWTzg5OMy5I7kC1K3NXiumMIrfLBx2m?usp=sharing) for Pretrained model  and Finetuned weight files 
 
 ### CIFAR-10
 
@@ -52,6 +50,7 @@ python prune_cifar.py \
     --gpus 0,1 \ # denote which gpu to use
     -j 4 \ # set number of dataloder worker
     --stop_batch 200 \ # set batch number of sampled data
+    # --coe 0 \ # hyper parameter of CDP
 ```
 
 Other parameters are listed in [prune_cifar.py](./prune_cifar.py).

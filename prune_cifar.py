@@ -30,7 +30,16 @@ def str2bool(s):
     if s.lower() in ('no', 'false', 'f', 'n', '0'):
         return False
     raise argparse.ArgumentTypeError('Boolean value expected.')
-
+def setup_seed(seed):
+     torch.manual_seed(seed)
+     torch.cuda.manual_seed_all(seed)
+     torch.cuda.manual_seed(seed)
+     np.random.seed(seed)
+     random.seed(seed)
+     cudnn.deterministic = True
+     #cudnn.benchmark = False
+     #cudnn.enabled = False
+     
 parser = argparse.ArgumentParser(description='CDP Pruner')
 
 parser.add_argument('--dataset', type=str, default='cifar10',
@@ -43,7 +52,7 @@ parser.add_argument('--pretrained_dir', type=str, default=None,
 # Data setting
 # '/gdata/ImageNet2012/train/'
 parser.add_argument('--dataroot', required=True, metavar='PATH',
-                    help='Path to ImageNet folder, which should contains train and val ')
+                    help='Path to Dataset folder')
 parser.add_argument('--batch_size', type=int, default=512,
                         help='input batch size for statistics (default: 128)')
 parser.add_argument('--stop_batch', type=int, default=200, help="Sample batch number")
@@ -77,6 +86,7 @@ print(args)
 
 #random.seed(args.seed)
 #torch.manual_seed(args.seed)
+setup_seed(args.seed)
 
 sparsity = args.sparsity
 save_file = '_'.join([str(args.model),
