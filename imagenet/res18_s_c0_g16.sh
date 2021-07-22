@@ -1,0 +1,12 @@
+python imagenet.py --dataroot /gdata/ImageNet2012/ \
+    --gpus 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15 \
+    -j 80 \
+    -b 4096 \
+    -lr 0.18 \
+    --epochs 250 \
+    --warmup 5 \
+    -d 1e-5 \
+    --model resnet18 \
+    --make-mask \
+    -s resnet18_920M_S_coe0_wp_250e \
+    --resume ../models/resnet18_pruned/resnet18_920M_S_coe0.pth

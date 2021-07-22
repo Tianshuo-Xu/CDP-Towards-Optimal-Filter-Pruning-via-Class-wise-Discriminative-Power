@@ -1,0 +1,13 @@
+python imagenet.py --dataroot /gdata/ImageNet2012/ \
+    --gpus 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15 \
+    -j 80 \
+    --model mobilenetv2 \
+    --make-mask \
+    -b 4096 \
+    --epochs 250 \
+    -lr 0.4 \
+    -d 4e-5 \
+    --warmup 1 \
+    --label-smoothing 0.1 \
+    -s mobilenetv2_150M_Sa_coe0 \
+    --resume ../models/mobilenetv2_pruned/mobilenetv2_150M_Sa_coe0.pth

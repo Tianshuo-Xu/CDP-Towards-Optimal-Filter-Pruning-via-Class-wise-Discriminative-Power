@@ -1,0 +1,14 @@
+python imagenet.py --dataroot /gdata/ImageNet2012/ \
+    --gpus 0,1,2,3,4,5,6,7 \
+    -j 32 \
+    --model resnet50 \
+    --make-mask \
+    -b 2048 \
+    -lr 0.4 \
+    --warmup 1 \
+    -d 4e-5 \
+    --epochs 120 \
+    --label-smoothing 0.1 \
+    --seed 879 \
+     -s resnet50_2G_S_coe0_0.4lr_ls \
+    --resume ../models/resnet50_pruned/resnet50_2334M_S_coe0.pth
