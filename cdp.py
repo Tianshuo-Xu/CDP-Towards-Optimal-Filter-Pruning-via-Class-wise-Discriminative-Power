@@ -48,7 +48,8 @@ class TFIDFPruner(L1FilterPruner):
         super().__init__(model, config_list, optimizer)
         self.set_wrappers_attribute("if_calculated", False)
         self.masker = TFIDFMasker(model, self, threshold=cdp_config["threshold"], tf_idf_map=cdp_config["map"], **algo_kwargs)
-
+    def update_masker(self,model,threshold,mapper):
+        self.masker = TFIDFMasker(model, self, threshold=threshold, tf_idf_map=mapper)        
 
 def acculumate_feature(model, loader, stop:int):
     model=model.cuda()
@@ -118,5 +119,39 @@ def get_threshold_by_sparsity(mapper:dict, sparsity:float):
     threshold = torch.topk(tf_idf_array, int(tf_idf_array.shape[0]*(1-sparsity)))[0].min()
     return threshold
 
-def get_threshold_by_flops(mapper:dict, reduced_ratio:float):
+def get_threshold_by_flops(mapper:dict, reduced_ratio:float, net):
     pass
+    # 二分查找最优阈值
+    sparsity=reduced_ratio # use reduced_ratio as init sparsity
+    tf_idf_array=torch.cat([v for v in mapper.values()],0)
+    threshold = torch.topk(tf_idf_array, int(tf_idf_array.shape[0]*(1-sparsity)))[0].min()
+    
+    cdp_config={"threshold": threshold, "map": mapper }
+    config_list = [{'sparsity': sparsity,'op_types': ['Conv2d']}]
+    pruner = TFIDFPruner(net, config_list, cdp_config)
+
+    ratio=0
+    upper=tf_idf_array.shape[0]
+    mid=int(tf_idf_array.shape[0]*(1-sparsity))
+    lower=0
+    count=0
+
+    while(np.abs(ratio-reduced_ratio)> 0.003):
+        # 只要差距大于 0.5%
+        # 如果按sparsity 得到的flops 被压缩率比目标值小 说明保留的filter多 则保留 小侧的区间 
+        # 如果按sparsity 得到的flops 被压缩率比目标值大 说明保留的filter少 则保留 大侧的区间
+        threshold = torch.topk(tf_idf_array, mid)[0].min()
+        flops_r, param, detail_flops = count_flops_params(net, (1, 3, 32, 32))
+        pruner.update_masker(net,threshold,mapper)
+        _ = pruner.compress()
+        flops, param, detail_flops = count_flops_params(net, (1, 3, 32, 32))
+        ratio=(flops_r-flops)/flops_r
+        if(ratio < reduced_ratio):
+            upper=mid
+        else:
+            lower=mid
+        mid=(upper+lower)//2
+        count+=1
+        print("Cutter Flops is: ",flops)
+        print("Rate is: ",ratio)
+    return threshold
