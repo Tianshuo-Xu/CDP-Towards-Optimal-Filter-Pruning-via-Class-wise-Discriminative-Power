@@ -147,6 +147,8 @@ net = load_model(args)
 feature_iit = acculumate_feature(net, train_all_loader, args.stop_batch)
 tf_idf_map = calculate_cdp(feature_iit,args.coe)
 threshold = get_threshold_by_sparsity(tf_idf_map,sparsity)
+# threshold = get_threshold_by_flops(tf_idf_map,target_reduced_ratio,net)
+
 print('threshold', threshold)
 
 # pruning         
