@@ -2,7 +2,7 @@
 
 This repo contains code and data of  all experiments of our paper. We also offer google drive link of some finetuned model weight files which we listed in our paper.
 
-![](.\readme\cdp_overview.png)
+![](https://github.com/Tianshuo-Xu/CDP-Towards-Optimal-Filter-Pruning-via-Class-wise-Discriminative-Power.git\readme\cdp_overview.png)
 
 ## Requirements
 
@@ -50,6 +50,7 @@ python prune_cifar.py \
     --gpus 0,1 \ # denote which gpu to use
     -j 4 \ # set number of dataloder worker
     --stop_batch 200 \ # set batch number of sampled data
+    --sparsity 0.5 # set the sparsity of model != reduced_flops_ratio
     # --coe 0 \ # hyper parameter of CDP
 ```
 
@@ -69,6 +70,7 @@ python statistic_imagenet.py \
     --gpus 0,1 \
     -j 4 \ # Number of dataloader worker
     --stop_batch 200\ # Number of sampled data
+    --sparsity 0.5 \ # Sparsity of model
 ```
 
 Other parameters are listed in [statistic_imagenet.py](./statistic_imagenet.py).
