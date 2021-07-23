@@ -22,12 +22,12 @@ ImageNet
 ## Performance
 
 ### CIFAR-10
-| Model      | FLOPs(M) | Base FLOPs(M) | Accuracy(%) | Baseline Acc(%) |
-| ----------- | ----------- | ----------- | ----------- | ----------- |
-| [VGG16](https://drive.google.com/file/d/13GXcYyb3pcI6zdZX_7FHe9SraAFt_uDE/view?usp=sharing)    | 103.3    |   313.5  | 94.87 | 94.47 |
-| [ResNet20](https://drive.google.com/file/d/1ArMYGnGzgUVN_NdvSAWQGG6G_mwU1cI3/view?usp=sharing)    | 20.76 | 40.6 | 92.49 | 92.57 |
-| [ResNet56](https://drive.google.com/file/d/1Kw95v4odKgNO91YYcHv1517NfdoqtphD/view?usp=sharing)   | 60.02  | 125 | 94.63 | 93.93 |
-| [ResNet56](https://drive.google.com/file/d/1V1Cg7IMLnZibvPYN8FfZ5pofjzVhYN-H/view?usp=sharing)   | 49.84  |  125 | 94.44 | 93.93 |
+| Model      | FLOPs(M) | Base FLOPs(M) | Accuracy(%) | Baseline Acc(%) | MindSpore |
+| ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
+| [VGG16](https://drive.google.com/file/d/13GXcYyb3pcI6zdZX_7FHe9SraAFt_uDE/view?usp=sharing)    | 103.3    |   313.5  | 94.87 | 94.47 | [Link](https://drive.google.com/file/d/1slb91ih7wN8fz2n_k9j9025vcTjholxG/view?usp=sharing) |
+| [ResNet20](https://drive.google.com/file/d/1ArMYGnGzgUVN_NdvSAWQGG6G_mwU1cI3/view?usp=sharing)    | 20.76 | 40.6 | 92.49 | 92.57 | [Link](https://drive.google.com/file/d/1wfGjAHfiLHGR5V4YoRPlwsL09OXrGmTa/view?usp=sharing) |
+| [ResNet56](https://drive.google.com/file/d/1Kw95v4odKgNO91YYcHv1517NfdoqtphD/view?usp=sharing)   | 60.02  | 125 | 94.63 | 93.93 |  |
+| [ResNet56](https://drive.google.com/file/d/1V1Cg7IMLnZibvPYN8FfZ5pofjzVhYN-H/view?usp=sharing)   | 49.84  |  125 | 94.44 | 93.93 |  |
 
 ![](./readme/cifar10.png)
 
