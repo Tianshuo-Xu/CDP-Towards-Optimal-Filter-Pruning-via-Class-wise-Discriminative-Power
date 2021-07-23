@@ -36,6 +36,7 @@ ImageNet
 | ----------- | ----------- | ----------- | ----------- | ----------- |
 | [ResNet18](https://drive.google.com/file/d/19x-zjQHl1nBDfp6Kgq-vNPXEhFKtP_ha/view?usp=sharing)   | 920  | 1820 | 68.76 | 69.76 |
 | [ResNet50](https://drive.google.com/file/d/1nT74i3hG89GkqytYRF8lllBRYIIZ2KzT/view?usp=sharing)   | 2089  |  4089 | 75.71 | 76.83 |
+
 ![](./readme/ImageNet.png)
 
 
