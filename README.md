@@ -1,5 +1,5 @@
-# CDP: Towards Optimal Filter Pruning via Class-wise Discriminative Power 
-### https://doi.org/10.1145/3474085.3475680 (ACM MM'21)
+# CDP: Towards Optimal Filter Pruning via Class-wise Discriminative Power (ACM MM'21)
+### https://doi.org/10.1145/3474085.3475680
 
 We proposed a novel filter pruning strategy via class-wise discriminative power (CDP). CDP quantizes the discriminative power by introducing the Term Frequency-Inverse Document Frequency (TF-IDF) into deep learning to quantize filters across classes. Specifically, CDP regards the output of a filter as a word and the whole feature map as a document. TF-IDF is used to generate the relevant score between the words (filters) and all documents (classes), \emph{i.e.,} filters that always have low TF-IDF scores are less discriminative and thus need to be pruned. In particular, CDP does not require any iterative training or search process, which is simple and straightforward.
 
