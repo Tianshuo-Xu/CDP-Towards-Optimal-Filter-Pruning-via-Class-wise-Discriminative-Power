@@ -1,6 +1,6 @@
 # CDP: Towards Optimal Filter Pruning via Class-wise Discriminative Power
 
-This repo contains code and data of  all experiments of our paper. We also offer google drive link of some finetuned model weight files which we listed in our paper.
+This repo contains code and data of  all experiments of our paper. We also offer google drive link of some finetuned model weight files which we listed in our paper (https://doi.org/10.1145/3474085.3475680).
 
 ![](./readme/cdp_overview.png)
 
