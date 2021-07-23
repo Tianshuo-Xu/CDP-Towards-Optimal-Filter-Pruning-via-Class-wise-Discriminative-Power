@@ -2,7 +2,7 @@
 
 This repo contains code and data of  all experiments of our paper. We also offer google drive link of some finetuned model weight files which we listed in our paper.
 
-![](https://github.com/Tianshuo-Xu/CDP-Towards-Optimal-Filter-Pruning-via-Class-wise-Discriminative-Power.git\readme\cdp_overview.png)
+![](./readme/cdp_overview.png)
 
 ## Requirements
 
@@ -24,10 +24,10 @@ ImageNet
 
 ### CIFAR-10
 
-![](.\readme\CIFAR.png)
+![](./readme/CIFAR.png)
 
 ### ImageNet
-![](.\readme\ImageNet.png)
+![](./readme/ImageNet.png)
 
 
 ## Running
