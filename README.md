@@ -1,9 +1,7 @@
 # CDP: Towards Optimal Filter Pruning via Class-wise Discriminative Power
-## https://doi.org/10.1145/3474085.3475680
+### https://doi.org/10.1145/3474085.3475680
 
 We proposed a novel filter pruning strategy via class-wise discriminative power (CDP). CDP quantizes the discriminative power by introducing the Term Frequency-Inverse Document Frequency (TF-IDF) into deep learning to quantize filters across classes. Specifically, CDP regards the output of a filter as a word and the whole feature map as a document. TF-IDF is used to generate the relevant score between the words (filters) and all documents (classes), \emph{i.e.,} filters that always have low TF-IDF scores are less discriminative and thus need to be pruned. In particular, CDP does not require any iterative training or search process, which is simple and straightforward.
-
-This repo contains code and data of  all experiments of our paper. We also offer google drive link of some finetuned model weight files which we listed in our paper.
 
 ![](./readme/cdp_overview.png)
 
@@ -23,13 +21,21 @@ ImageNet
 
 ## Performance
 
-[Google drive link](https://drive.google.com/drive/folders/16rWTzg5OMy5I7kC1K3NXiumMIrfLBx2m?usp=sharing) for Pretrained model  and Finetuned weight files 
-
 ### CIFAR-10
+| Model      | FLOPs(M) | Base FLOPs(M) | Accuracy(%) | Baseline Acc(%) |
+| ----------- | ----------- | ----------- | ----------- | ----------- |
+| [VGG16](https://drive.google.com/file/d/13GXcYyb3pcI6zdZX_7FHe9SraAFt_uDE/view?usp=sharing)    | 103.3    |   313.5  | 94.87 | 94.47 |
+| [ResNet20](https://drive.google.com/file/d/1ArMYGnGzgUVN_NdvSAWQGG6G_mwU1cI3/view?usp=sharing)    | 20.76 | 40.6 | 92.49 | 92.57 |
+| [ResNet56](https://drive.google.com/file/d/1Kw95v4odKgNO91YYcHv1517NfdoqtphD/view?usp=sharing)   | 60.02  | 125 | 94.63 | 93.93 |
+| [ResNet56](https://drive.google.com/file/d/1V1Cg7IMLnZibvPYN8FfZ5pofjzVhYN-H/view?usp=sharing)   | 49.84  |  125 | 94.44 | 93.93 |
 
 ![](./readme/CIFAR.png)
 
 ### ImageNet
+| Model      | FLOPs(M) | Base FLOPs(M) | Accuracy(%) | Base Acc(%) |
+| ----------- | ----------- | ----------- | ----------- | ----------- |
+| [ResNet18](https://drive.google.com/file/d/19x-zjQHl1nBDfp6Kgq-vNPXEhFKtP_ha/view?usp=sharing)   | 920  | 1820 | 68.76 | 69.76 |
+| [ResNet50](https://drive.google.com/file/d/1nT74i3hG89GkqytYRF8lllBRYIIZ2KzT/view?usp=sharing)   | 2089  |  4089 | 75.71 | 76.83 |
 ![](./readme/ImageNet.png)
 
 
