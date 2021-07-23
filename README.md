@@ -98,8 +98,8 @@ python imagenet.py \
     --batch-size 128 \
     --epochs 200\
     --make-mask \
-    # --warmup 1 \
-    # --label-smoothing 0.1 \
+    --warmup 1 \
+    --label-smoothing 0.1 \
 ```
 
 Other parameters are listed in [imagenet.py](./imagenet/imagenet.py).
