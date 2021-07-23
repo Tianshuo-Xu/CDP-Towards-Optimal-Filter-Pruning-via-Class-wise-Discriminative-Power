@@ -3,7 +3,7 @@
 
 We proposed a novel filter pruning strategy via class-wise discriminative power (CDP). CDP quantizes the discriminative power by introducing the Term Frequency-Inverse Document Frequency (TF-IDF) into deep learning to quantize filters across classes. Specifically, CDP regards the output of a filter as a word and the whole feature map as a document. TF-IDF is used to generate the relevant score between the words (filters) and all documents (classes), \emph{i.e.,} filters that always have low TF-IDF scores are less discriminative and thus need to be pruned. In particular, CDP does not require any iterative training or search process, which is simple and straightforward.
 
-![](./readme/cdp_overview.png)
+![](./readme/cdp_final.png)
 
 ## Requirements
 
@@ -29,7 +29,7 @@ ImageNet
 | [ResNet56](https://drive.google.com/file/d/1Kw95v4odKgNO91YYcHv1517NfdoqtphD/view?usp=sharing)   | 60.02  | 125 | 94.63 | 93.93 |
 | [ResNet56](https://drive.google.com/file/d/1V1Cg7IMLnZibvPYN8FfZ5pofjzVhYN-H/view?usp=sharing)   | 49.84  |  125 | 94.44 | 93.93 |
 
-![](./readme/CIFAR.png)
+![](./readme/cifar10.png)
 
 ### ImageNet
 | Model      | FLOPs(M) | Base FLOPs(M) | Accuracy(%) | Base Acc(%) |
@@ -37,7 +37,7 @@ ImageNet
 | [ResNet18](https://drive.google.com/file/d/19x-zjQHl1nBDfp6Kgq-vNPXEhFKtP_ha/view?usp=sharing)   | 920  | 1820 | 68.76 | 69.76 |
 | [ResNet50](https://drive.google.com/file/d/1nT74i3hG89GkqytYRF8lllBRYIIZ2KzT/view?usp=sharing)   | 2089  |  4089 | 75.71 | 76.83 |
 
-![](./readme/ImageNet.png)
+![](./readme/imagenet.png)
 
 
 ## Running
