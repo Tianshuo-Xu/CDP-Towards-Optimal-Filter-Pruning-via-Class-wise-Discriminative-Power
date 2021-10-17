@@ -3,12 +3,13 @@
 ![](./readme/cdp_final.png)
 
 ### https://doi.org/10.1145/3474085.3475680
-We proposed a novel filter pruning strategy via class-wise discriminative power (CDP). CDP quantizes the discriminative power by introducing the Term Frequency-Inverse Document Frequency (TF-IDF) into deep learning to quantize filters across classes. Specifically, CDP regards the output of a filter as a word and the whole feature map as a document. TF-IDF is used to generate the relevant score between the words (filters) and all documents (classes), *i.e.,* filters that always have low TF-IDF scores are less discriminative and thus need to be pruned. In particular, CDP does not require any iterative training or search process, which is simple and straightforward.
+We proposed a novel filter pruning strategy via class-wise discriminative power (CDP). CDP quantizes the discriminative power by introducing the Term Frequency-Inverse Document Frequency (TF-IDF) into deep learning to quantize filters across classes. Specifically, CDP regards the output of a filter as a word and the whole feature map as a document. TF-IDF is used to generate the relevant score between the words (filters) and all documents (classes), *i.e.,* filters that always have low TF-IDF scores are less discriminative and thus need to be pruned. In particular, CDP does not require any iterative training or search process, which is simple and straight forward.
 
 ## Requirements
 
 ### Environment
 
+- python 3.6
 - pytorch 1.7.0
 - torchvision 0.7.0
 - NNI 2.0
