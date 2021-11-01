@@ -109,4 +109,13 @@ Other parameters are listed in [imagenet.py](./imagenet/imagenet.py).
 The entire code is under the [MIT License](./LICENSE)
 
 ## Citation
+```shell
+@inproceedings{xu2021cdp,
+  title={CDP: Towards Optimal Filter Pruning via Class-wise Discriminative Power},
+  author={Xu, Tianshuo and Wu, Yuhang and Zheng, Xiawu and Xi, Teng and Zhang, Gang and Ding, Errui and Chao, Fei and Ji, Rongrong},
+  booktitle={Proceedings of the 29th ACM International Conference on Multimedia},
+  pages={5491--5500},
+  year={2021}
+}
+```
 \[1] Tianshuo Xu, Yuhang Wu, Xiawu Zheng, Teng Xi, Gang Zhang, Errui Ding,Fei Chao, and Rongrong Ji. 2021. CDP: Towards Optimal Filter Pruningvia Class-wise Discriminative Power. InProceedings of the 29th ACM Int’lConference on Multimedia (MM ’21), Oct. 20–24, 2021, Virtual Event, China.ACM, New York, NY, USA, 10 pages. https://doi.org/10.1145/3474085.3475680
